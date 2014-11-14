@@ -1,0 +1,78 @@
+#!/bin/sh
+
+# project raw
+GULPDIR=~/Sync/code/Generators/gulp-webapp/.
+
+#mixin assets
+CSSMIXINS=~/Sync/code/Frontend-Mixins/css/.
+JADEMIXINS=~/Sync/code/Frontend-Mixins/jade/.
+
+# makesure dir exists
+mkdir -p $GULPDIR
+
+# create new project folder
+mkdir $1
+
+# move into new folder
+cd $1
+
+# make the structure
+mkdir dev build
+cd build
+mkdir public server
+cd public
+mkdir css js img
+cd ../../
+
+# copy the project enviroment
+cp -a -R $GULPDIR .
+
+# copy other deps
+cp -a $CSSMIXINS ./dev/frontend/stylus
+cp -a $JADEMIXINS ./dev/frontend/jade/partials
+
+# create the npm package.json
+cat <<EOF > package.json
+{
+  "name": "$1",
+  "version": "0.1.0",
+  "dependencies": {
+    "body-parser": "^1.6.5",
+    "express": "^4.8.4",
+    "jade": "^1.5.0",
+    "nano": "^5.10.0"
+  },
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-nodemon": "^1.0.4",
+    "gulp-browserify": "*",
+    "gulp-concat": "*",
+    "gulp-jade": "*",
+    "gulp-jshint": "^1.7.1",
+    "gulp-livereload": "*",
+    "gulp-stylus": "*",
+    "gulp-uglify": "*",
+    "jshint-stylish": "^0.4.0",
+    "nib": "*",
+    "axis-css": "*"
+  }
+}
+EOF
+
+# create Readme.md
+cat <<EOF > Readme.md
+#$1
+---
+EOF
+
+# build
+git init
+npm install
+#gulp init
+
+# source /Users/Sputnik/.bash_profile
+#jump $1
+
+# exit into new project
+#alias jump='. cd ~/Sites/$1/dev'
+#jump

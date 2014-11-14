@@ -1,0 +1,14 @@
+#!/bin/sh
+
+#Let's get the existing value and store it in FILESTATE
+FILESTATE=`defaults read com.apple.finder AppleShowAllFiles`
+
+# I'm assuming that the defaults command will return 0 for false and 1 for true!
+if [ "$FILESTATE" = "0" ]; then
+   defaults write com.apple.finder AppleShowAllFiles 1
+else
+   defaults write com.apple.finder AppleShowAllFiles 0
+fi
+
+# Looks like you want to restart Finder, so yes, let's kill all instances of it that are running.....
+killall Finder

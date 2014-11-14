@@ -1,0 +1,70 @@
+#!/bin/sh
+
+###
+# Script will install a small HTML5 project
+# Running: ~/ . project [project-name]
+# by appending the . this project will jump into the directory path created at /project/dev
+###
+
+# project raw
+GULPDIR=~/Sync/code/Generators/gulp-frontend/
+
+#mixin assets
+CSSMIXINS=~/Sync/code/Frontend-Mixins/css/
+JADEMIXINS=~/Sync/code/Frontend-Mixins/jade/
+
+# makesure dir exists
+mkdir -p $GULPDIR
+
+# create new project folder
+mkdir $1
+
+# move into new folder
+cd $1
+
+# make the structure
+mkdir css dev img js
+
+cd dev
+
+# copy the project enviroment
+cp -a -R $GULPDIR .
+
+# copy other deps
+cp -a $CSSMIXINS ./stylus
+cp -a $JADEMIXINS ./jade/partials
+
+# create the npm package.json
+cat <<EOF > package.json
+{
+  "name": "$1",
+  "version": "0.1.0",
+  "dependencies": {
+    "jquery": "*"
+  },
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-browserify": "*",
+    "gulp-concat": "*",
+    "gulp-jade": "*",
+    "gulp-jshint": "^1.7.1",
+    "gulp-livereload": "*",
+    "gulp-stylus": "*",
+    "gulp-uglify": "*",
+    "jshint-stylish": "^0.4.0",
+    "nib": "*",
+    "axis-css": "*"
+  }
+}
+EOF
+
+# create Readme.md
+cat <<EOF > Readme.md
+#$1
+---
+EOF
+
+# build
+git init
+npm install
+gulp init

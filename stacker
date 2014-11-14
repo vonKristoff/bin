@@ -1,0 +1,21 @@
+#!/bin/sh
+
+###
+# The following script allows the user to ssh into a fresh install of Ubuntu, and install the chosen web-stack that becomes daemonised.
+###
+
+# $1 : ssh connection string user@host
+# $2 : Name of the environment stack to install
+
+ssh $1 <<END
+
+sudo apt-get update
+sudo apt-get -y install git
+
+git clone https://github.com/vonKristoff/stacks
+
+# Now run the appropriate environment script
+
+sudo stacks/${2}.sh
+
+END
