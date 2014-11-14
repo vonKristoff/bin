@@ -2,69 +2,42 @@
 
 ###
 # Script will install a small HTML5 project
-# Running: ~/ . project [project-name]
+# Running: ~/ . project [project-name] [type] [sh]
 # by appending the . this project will jump into the directory path created at /project/dev
 ###
 
-# project raw
-GULPDIR=~/Sync/code/Generators/gulp-frontend/
+###
+## types
+#
+# exp           - Basic fast deploy experiment mode, designed for css and minimal js tests
+# es6           - The Future - browserify for node in the frontend / common js modules
+# node-server   - Creates a skeleton express app
 
-#mixin assets
-CSSMIXINS=~/Sync/code/Frontend-Mixins/css/
-JADEMIXINS=~/Sync/code/Frontend-Mixins/jade/
+# assign default type if none given
+TYPE=${2:-exp}
 
-# makesure dir exists
-mkdir -p $GULPDIR
+# set scripts path
+SCRIPTS=~/Sync/Code/Generators/build-scripts
 
-# create new project folder
-mkdir $1
+# import relevant script
+case "$TYPE" in
 
-# move into new folder
-cd $1
+  node-server)
+    LOCATION=~/Sites/_NODE
+    cd $LOCATION
+    . $SCRIPTS/.node-server
+    ;;
+  es6)
+    LOCATION=~/Sites/_MODULES
+    cd $LOCATION
+    . $SCRIPTS/.es6
+    ;;
+  *)  
+    LOCATION=~/Sites/_VANILA
+    cd $LOCATION
+    . $SCRIPTS/.exp
+    ;;
+esac
 
-# make the structure
-mkdir css dev img js
-
-cd dev
-
-# copy the project enviroment
-cp -a -R $GULPDIR .
-
-# copy other deps
-cp -a $CSSMIXINS ./stylus
-cp -a $JADEMIXINS ./jade/partials
-
-# create the npm package.json
-cat <<EOF > package.json
-{
-  "name": "$1",
-  "version": "0.1.0",
-  "dependencies": {
-    "jquery": "*"
-  },
-  "devDependencies": {
-    "gulp": "*",
-    "gulp-browserify": "*",
-    "gulp-concat": "*",
-    "gulp-jade": "*",
-    "gulp-jshint": "^1.7.1",
-    "gulp-livereload": "*",
-    "gulp-stylus": "*",
-    "gulp-uglify": "*",
-    "jshint-stylish": "^0.4.0",
-    "nib": "*",
-    "axis-css": "*"
-  }
-}
-EOF
-
-# create Readme.md
-cat <<EOF > Readme.md
-#$1
----
-EOF
-
-# build
-git init
-npm install
-gulp init
+# exit into new project
+cd $LOCATION/$1
