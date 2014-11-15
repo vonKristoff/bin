@@ -29,13 +29,18 @@ pbcopy < ~/.ssh/id_rsa.pub
 # test and accept RSA
 ssh -T git@github.com
 
-
 #set git config values
 git config --global user.name "username"
 git config --global user.email "name@gmail.com"
+
 
 # install Node & NPM
 brew install node
 
 # install TJ's Node version manager
 npm install -g n
+
+
+# Keep last! - follow the instructions given by the output
+# install dnsmasq 
+brew install dnsmasq
