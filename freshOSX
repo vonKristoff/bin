@@ -1,0 +1,41 @@
+#!/bin/sh
+
+# create a .bash_profile and rearrange the PATH settings
+cd ~/
+touch .bash_profile
+echo export PATH='/usr/local/bin:$PATH' >> ~/.bash_profile
+source ~/.bash_profile
+
+
+# Now install Xcode Developer CLI tools 
+xcode-select --install
+# accept Xcode license agreement
+sudo gcc --version
+
+
+# install Homebrew
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# update
+brew update
+brew doctor
+
+
+# install Git
+brew install git
+
+# manage Git
+ssh-keygen -t rsa -C "name@gmail.com"
+pbcopy < ~/.ssh/id_rsa.pub
+# test and accept RSA
+ssh -T git@github.com
+
+
+#set git config values
+git config --global user.name "username"
+git config --global user.email "name@gmail.com"
+
+# install Node & NPM
+brew install node
+
+# install TJ's Node version manager
+npm install -g n
