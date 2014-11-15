@@ -11,7 +11,7 @@ Create a `~/.bin/` and clone repo.
 * `newpost` creates a new post for jekyll blog (deprecated - but useful)
 * `project` initialise new web based project. See below for detailed usage.
 * `stacker` Invoke a web stack of choice on a fresh VPS. see [@repo](https://github.com/vonKristoff/stacks)
-* `freshOSX` __make executable__ `chown +x freshOSX`, then run to install basic dev env dependencies for your new OSX. ie: git; node; homebrew. **!mportant - fill out git config options**, and think to include: `git config --global push.default simple`
+* `freshOSX` __make executable__ `chown +x freshOSX`, then run to install basic dev env dependencies for your new OSX. ie: git; node; homebrew. **!mportant - fill out git config options**, and think to include: `git config --global push.default simple`. Finally, you could also check [this](http://mallinson.ca/osx-web-development/) great writeup out, for anything I may have missed out - `dnsmasq`
 
 ---
 
