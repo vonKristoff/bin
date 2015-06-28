@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/sh -x
 
 ###
 # Script will install a small HTML5 project
-# Running: ~/ . project [project-name] [type] [sh]
+# Running: ~/ . project [project-name] [type] [servers]
 # by appending the . this project will jump into the directory path created at /project/dev
 ###
 
@@ -10,11 +10,14 @@
 ## types
 #
 # exp           - Basic fast deploy experiment mode, designed for css and minimal js tests
-# es6           - The Future - browserify for node in the frontend / common js modules
+# browserify    - The Future - browserify for node in the frontend / common js modules
 # node-server   - Creates a skeleton express app
 
 # assign default type if none given
 TYPE=${2:-exp}
+
+# node server option
+SERVER=${3}
 
 # set scripts path
 SCRIPTS=~/Sync/Code/Generators/build-scripts
@@ -23,21 +26,36 @@ SCRIPTS=~/Sync/Code/Generators/build-scripts
 case "$TYPE" in
 
   node-server)
-    LOCATION=~/Sites/_NODE
+    LOCATION=. #~/Sites/_Node
     cd $LOCATION
     . $SCRIPTS/.node-server
     ;;
-  es6)
-    LOCATION=~/Sites/_MODULES
-    cd $LOCATION
-    . $SCRIPTS/.es6
+  browserify)
+    LOCATION=. #~/Sites/_Browserify
+    . $SCRIPTS/.browserify
+    ;;
+  requirejs)
+    LOCATION=. #~/Sites/_AMD
+    . $SCRIPTS/.amd
+    ;;
+  react)
+    LOCATION=. #~/Developement
+    . $SCRIPTS/.react
     ;;
   *)  
-    LOCATION=~/Sites/_VANILA
+    LOCATION=.
     cd $LOCATION
     . $SCRIPTS/.exp
     ;;
 esac
 
+# install express and use basic node server on port 3000
+
+if [ "$SERVER" = "static" ]; then
+ cp ~/Sync/Code/Generators/demon/server.js $LOCATION/$1/dev/server.js
+ npm install express --save
+fi
+
+
 # exit into new project
-cd $LOCATION/$1
+cd $CURRENT/$1
