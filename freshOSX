@@ -24,15 +24,14 @@ brew doctor
 brew install git
 
 # manage Git
-ssh-keygen -t rsa -C "name@gmail.com"
+ssh-keygen -t rsa -C "mrjcnicolas@gmail.com"
 pbcopy < ~/.ssh/id_rsa.pub
 # test and accept RSA
 ssh -T git@github.com
 
 #set git config values
-git config --global user.name "username"
-git config --global user.email "name@gmail.com"
-
+git config --global user.name "vonkristoff"
+git config --global user.email "mrjcnicolas@gmail.com"
 
 # install Node & NPM
 brew install node
@@ -40,7 +39,9 @@ brew install node
 # install TJ's Node version manager
 npm install -g n
 
+# install http-server, nodemon, gulp, request, eyespect
+npm install -g nodemon http-server gulp request eyespect
 
 # Keep last! - follow the instructions given by the output
 # install dnsmasq 
-brew install dnsmasq
+####brew install dnsmasq
