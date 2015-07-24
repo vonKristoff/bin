@@ -5,7 +5,7 @@ Basic set of executables from the bash prompt.
 ###How to:
 Create a `~/.bin/` and clone repo.
 
-##Execs
+###Shell Execs
 
 * `hidden` shows / hides hidden files in Finder
 * `newpost` creates a new post for jekyll blog (deprecated - but useful)
@@ -15,18 +15,19 @@ Create a `~/.bin/` and clone repo.
 
 ---
 
-###`project` [name] [type]
-Choose a deployment method, for decent experiment deployment.
+###Development Boilerplates
 
->NAME  
+By using the `project` shell from above, build an environment boilerplate.
 
-Sets the **project name** as **working directory**, **readme title** and **package.json** description.
+**Please note, actual scripts and mixins are located on a Bittorent Sync folder**
 
->TYPES
+####Usage
 
-* `exp` (default - not required) *BASIC Vanilla experimental project, probably involving just CSS and OR minimal Javascript*
-* `es6` Getting exciting - Modern Best practice methods involving Node in the frontend with **Browserify**, **Common JS Modules**, **JS TESTING**
-* `node-server` Skeleton `Express` app running a node server 
+	. project [name] [boilerplate]
+	
+####Available stacks
 
-##Other
-* `subl` - alias for sublime text. (think deprecated.. needs checking)
+*	`exp` - the most basic HTML5 setup for fast CSS JS Experiements and prototyping. Also the default project setting, so you can leave [boilerplate] blank.
+*	`express` - Basic express app
+*	`requirejs` - AMD setup for JS modules, but ultimately Frameworkless.
+*	`browserify` - ES6, Common JS Modules and NPM packages in the FE. Plus VUE.js integration.
