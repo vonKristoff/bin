@@ -41,3 +41,5 @@ case "$TYPE" in
     . $SCRIPTS/.exp
     ;;
 esac
+
+s . # open with sublime
