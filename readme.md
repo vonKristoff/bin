@@ -30,4 +30,5 @@ By using the `project` shell from above, build an environment boilerplate.
 *	`exp` - the most basic HTML5 setup for fast CSS JS Experiements and prototyping. Also the default project setting, so you can leave [boilerplate] blank.
 *	`express` - Basic express app
 *	`requirejs` - AMD setup for JS modules, but ultimately Frameworkless.
-*	`browserify` - ES6, Common JS Modules and NPM packages in the FE. Plus VUE.js integration.
+*	`browserify` - ES6, Common JS Modules and NPM packages in the FE. Plus `Vue.js` integration.
+*	`ng` - Angular boilerplate
