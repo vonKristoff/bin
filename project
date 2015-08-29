@@ -35,6 +35,10 @@ case "$TYPE" in
     LOCATION=. 
     . $SCRIPTS/.amd
     ;;
+  ng)
+    LOCATION=. 
+    . $SCRIPTS/.angular
+    ;;
   *)  
     LOCATION=.
     cd $LOCATION
