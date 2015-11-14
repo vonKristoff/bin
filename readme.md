@@ -27,6 +27,8 @@ By using the `project` shell from above, build an environment boilerplate.
 	
 ####Available stacks
 
+*	`jspm` - Using JSPM package manager over Bower, and NPM scripts over Gulp. It allows one to combine any module type together, Common JS, ES6, AMD, in the same file. As well as writing ES6 using Babel.
+
 *	`exp` - the most basic HTML5 setup for fast CSS JS Experiements and prototyping. Also the default project setting, so you can leave [boilerplate] blank.
 *	`express` - Basic express app
 *	`requirejs` - AMD setup for JS modules, but ultimately Frameworkless.
