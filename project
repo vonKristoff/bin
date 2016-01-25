@@ -27,6 +27,11 @@ case "$TYPE" in
     cd $LOCATION
     . $SCRIPTS/.node-express
     ;;
+  wordpress)
+    LOCATION=. 
+    cd $LOCATION
+    . $SCRIPTS/.node-wp
+    ;;
   browserify)
     LOCATION=.
     . $SCRIPTS/.browserify
