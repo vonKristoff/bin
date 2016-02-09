@@ -48,6 +48,10 @@ case "$TYPE" in
     LOCATION=. 
     . $SCRIPTS/.es6
     ;;
+  vue)
+    LOCATION=.
+    . $SCRIPTS/.vue
+    ;;
   *)  
     LOCATION=.
     cd $LOCATION
