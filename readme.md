@@ -34,3 +34,4 @@ By using the `project` shell from above, build an environment boilerplate.
 *	`requirejs` - AMD setup for JS modules, but ultimately Frameworkless.
 *	`browserify` - ES6, Common JS Modules and NPM packages in the FE. Plus `Vue.js` integration.
 *	`ng` - Angular boilerplate
+*	`vue` - Vue component instance boilerplate. With NPM build scripts; browserify and ES6
