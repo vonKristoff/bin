@@ -25,37 +25,37 @@ case "$TYPE" in
   express)
     LOCATION=. 
     cd $LOCATION
-    . $SCRIPTS/.node-express
+    . $SCRIPTS/node-express
     ;;
   wordpress)
     LOCATION=. 
     cd $LOCATION
-    . $SCRIPTS/.node-wp
+    . $SCRIPTS/node-wp
     ;;
   browserify)
     LOCATION=.
-    . $SCRIPTS/.browserify
+    . $SCRIPTS/browserify
     ;;
   requirejs)
     LOCATION=. 
-    . $SCRIPTS/.amd
+    . $SCRIPTS/amd
     ;;
   ng)
     LOCATION=. 
-    . $SCRIPTS/.angular
+    . $SCRIPTS/angular
     ;;
   jspm)
     LOCATION=. 
-    . $SCRIPTS/.es6
+    . $SCRIPTS/es6
     ;;
   vue)
     LOCATION=.
-    . $SCRIPTS/.vue
+    . $SCRIPTS/vue
     ;;
   *)  
     LOCATION=.
     cd $LOCATION
-    . $SCRIPTS/.exp
+    . $SCRIPTS/exp
     ;;
 esac
 
